@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tekno PC Labs</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-900 text-white font-sans">
+  <!-- Hero Section -->
+  <header class="bg-gradient-to-r from-blue-600 to-indigo-800 p-8 text-center">
+    <h1 class="text-4xl md:text-6xl font-bold mb-4">Tekno PC Labs</h1>
+    <p class="text-xl md:text-2xl">Custom PCs • Repairs • Tech Solutions</p>
+  </header>
+
+  <!-- About Section -->
+  <section class="max-w-4xl mx-auto px-4 py-12">
+    <h2 class="text-3xl font-bold mb-4">About Us</h2>
+    <p class="text-lg leading-relaxed text-gray-300">
+      At Tekno PC Labs, we specialize in custom PC builds, hardware diagnostics, and cutting-edge repair services.
+      Whether you're a gamer, developer, or business pro—our mission is to make your tech unstoppable.
+    </p>
+  </section>
+
+  <!-- Services Section -->
+  <section class="bg-gray-800 py-12 px-4">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl font-bold mb-6">Our Services</h2>
+        <li class="bg-gray-700 p-4 rounded-xl shadow hover:bg-gray-600 transition">
+          <h3 class="text-xl font-semibold">Diagnostics & Repairs</h3>
+          <p>From boot failures to thermal issues—we troubleshoot it all.</p>
+        </li>
+        <li class="bg-gray-700 p-4 rounded-xl shadow hover:bg-gray-600 transition">
+          <h3 class="text-xl font-semibold">Upgrades & Optimization</h3>
+          <p>Speed up your system with RAM, SSD, or GPU upgrades.</p>
+        </li>
+        <li class="bg-gray-700 p-4 rounded-xl shadow hover:bg-gray-600 transition">
+          <h3 class="text-xl font-semibold">Remote Support</h3>
+          <p>Quick fixes and consultations from anywhere in the world.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PCs Section -->
+  <section class="bg-gray-900 py-12 px-4">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold mb-6 text-white">Available PCs</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+          </ul>
+          <button onclick="openRequestForm('Gaming Beast 9000')" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded">
+            Request This
+          </button>
+        </div>
+
+        <!-- PC Card 3 -->
+        <div class="bg-gray-800 p-4 rounded-xl shadow hover:shadow-lg transition">
+          <img src="https://via.placeholder.com/300x200" alt="Budget Build" class="rounded mb-4">
+          <h3 class="text-xl font-semibold mb-2">Tekno T9093</h3>
+          <p class="text-gray-300 text-sm mb-2">The powerful PC with essentials.</p>
+          <ul class="text-sm text-gray-400 mb-4">
+            <li>Tekno R4343 CPU</li>
+            <li>Tekno IG GPU</li>
+            <li>V-Sync</li>
+            <li>2048GB SSD</li>
+            <li>Portable, can go anywhere.</li>
+            <details>
+    <summary>Good for work?</summary>
+      <div>
+       Yes, you can use this for work, download your favorite tools on there!
+      </div>
+    </details>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="max-w-4xl mx-auto px-4 py-12">
+    <h2 class="text-3xl font-bold mb-6">Get in Touch</h2>
+    <form class="space-y-6">
+      <input type="text" placeholder="Your Name" class="w-full p-3 rounded bg-gray-700 text-white placeholder-gray-400">
+      <input type="email" placeholder="Your Email" class="w-full p-3 rounded bg-gray-700 text-white placeholder-gray-400">
+      <textarea rows="4" placeholder="Your Message" class="w-full p-3 rounded bg-gray-700 text-white placeholder-gray-400"></textarea>
+      <button type="submit" class="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded text-white font-semibold">
+        Send Message
+      </button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-center py-6">
+    <p>&copy; 2025 Tekno Labs.</p>
+  </footer>
+
+  <!-- Request Modal -->
+  <div id="requestModal" class="hidden fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
+    <div class="bg-gray-800 p-6 rounded-lg max-w-md w-full text-white">
+      <h2 class="text-2xl font-bold mb-4" id="pcTitle">Request PC</h2>
+      <form onsubmit="submitRequest(event)">
+        <input type="hidden" id="selectedPC" name="pc" />
+        <input type="text" required placeholder="Your Name" class="w-full mb-3 p-2 rounded bg-gray-700">
+        <input type="email" required placeholder="Your Email" class="w-full mb-3 p-2 rounded bg-gray-700">
+        <textarea placeholder="Additional Notes" class="w-full mb-3 p-2 rounded bg-gray-700"></textarea>
+        <div class="flex justify-between">
+          <button type="submit" class="bg-green-600 hover:bg-green-700 px-4 py-2 rounded">Send</button>
+          <button type="button" onclick="closeModal()" class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Script -->
+  <script>
+    function openRequestForm(pcName) {
+      document.getElementById('pcTitle').innerText = 'Request: ' + pcName;
+      document.getElementById('selectedPC').value = pcName;
+      document.getElementById('requestModal').classList.remove('hidden');
+    }
+
+    function closeModal() {
+      document.getElementById('requestModal').classList.add('hidden');
+    }
+
+    function submitRequest(event) {
+      event.preventDefault();
+      const pc = document.getElementById('selectedPC').value;
+      alert(`✅ Request for "${pc}" sent! (Functionality placeholder — backend/email coming soon)`);
+      closeModal();
+    }
+  </script>
+</body>
+</html>
